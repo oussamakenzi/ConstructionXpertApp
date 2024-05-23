@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Tache {
     private int idTache;
@@ -8,6 +9,16 @@ public class Tache {
     private Date dateDbTache;
     private Date dateFinTache;
     private int idProjet;
+
+    public List<Ressource> getRessources() {
+        return ressources;
+    }
+
+    public void setRessources(List<Ressource> ressources) {
+        this.ressources = ressources;
+    }
+
+    List <Ressource> ressources;
 
     public Tache(Date dateDbTache, Date dateFinTache, String description) {
         this.dateDbTache = dateDbTache;
