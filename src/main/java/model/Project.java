@@ -1,4 +1,4 @@
-package metier;
+package model;
 
 import java.util.Date;
 
@@ -48,16 +48,16 @@ public class Project {
         this.description = description;
     }
 
-    public Date getDateDebut() {
-        return dateDebut;
+    public java.sql.Date getDateDebut() {
+        return (java.sql.Date) dateDebut;
     }
 
     public void setDateDebut(Date dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public Date getDateFin() {
-        return dateFin;
+    public java.sql.Date getDateFin() {
+        return (java.sql.Date) dateFin;
     }
 
     public void setDateFin(Date dateFin) {
