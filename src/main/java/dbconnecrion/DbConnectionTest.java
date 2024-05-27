@@ -9,7 +9,8 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.AssertJUnit.fail;
 
-public class DbConnectionTest {
+public class
+DbConnectionTest {
 
     @Test
     public void testGetConnection() {

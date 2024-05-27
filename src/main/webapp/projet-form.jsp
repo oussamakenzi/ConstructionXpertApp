@@ -10,7 +10,7 @@
 <body>
 <div class="container">
     <h2 class="mt-5">${projet != null ? 'Modifier Projet' : 'Nouveau Projet'}</h2>
-    <form action="${projet != null ? 'update' : 'insert'}" method="get">
+    <form action="${projet != null ? 'update' : 'insert'}" method="post" onsubmit="return validateForm()">
         <input type="hidden" name="id" value="${projet != null ? projet.idProjet : ''}">
         <div class="form-group">
             <label for="nomProjet">Nom du Projet</label>
@@ -36,5 +36,56 @@
         <a href="list" class="btn btn-secondary">Annuler</a>
     </form>
 </div>
+<script>
+    function validateForm() {
+        var nomProjet = document.getElementById("nomProjet").value;
+        var description = document.getElementById("description").value;
+        var dateDebut = document.getElementById("dateDebut").value;
+        var dateFin = document.getElementById("dateFin").value;
+        var budget = document.getElementById("budget").value;
+
+        // Vérification du nom du projet
+        if (nomProjet == "") {
+            alert("Veuillez saisir le nom du projet");
+            return false;
+        }
+
+        // Vérification de la description
+        if (description == "") {
+            alert("Veuillez saisir une description pour le projet");
+            return false;
+        }
+
+        // Vérification de la date de début
+        if (dateDebut == "") {
+            alert("Veuillez sélectionner une date de début pour le projet");
+            return false;
+        }
+
+        // Vérification de la date de fin
+        if (dateFin == "") {
+            alert("Veuillez sélectionner une date de fin pour le projet");
+            return false;
+        }
+        // Conversion des dates en objets Date pour la comparaison
+        var debut = new Date(dateDebut);
+        var fin = new Date(dateFin);
+
+        // Vérification si la date de fin est antérieure ou égale à la date de début
+        if (fin <= debut) {
+            alert("La date de fin doit être postérieure à la date de début");
+            return false;
+        }
+
+        // Vérification du budget
+        if (budget == "" || isNaN(budget) || parseFloat(budget) <= 0) {
+            alert("Veuillez saisir un budget valide pour le projet");
+            return false;
+        }
+
+        return true; // Forme valide
+    }
+</script>
+
 </body>
 </html>

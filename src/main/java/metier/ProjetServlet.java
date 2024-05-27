@@ -24,8 +24,24 @@ public class ProjetServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getServletPath();
+        try {
+            process(request, response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, jakarta.servlet.http.HttpServletResponse response) throws ServletException, IOException {
+        try {
+            process(request, response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void process(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        String action = request.getServletPath();
         try {
             switch (action) {
                 case "/new":
@@ -55,7 +71,7 @@ public class ProjetServlet extends HttpServlet {
     private void listProjet(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<Projet> listProjet = iProjetDao.getAllProjets();
         request.setAttribute("listProjet", listProjet);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/list.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -115,4 +131,5 @@ public class ProjetServlet extends HttpServlet {
         iProjetDao.deleteProjet(id);
         response.sendRedirect("list");
     }
+
 }

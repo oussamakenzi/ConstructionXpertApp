@@ -1,62 +1,76 @@
 package model;
 
+
 import java.util.Date;
-import java.util.List;
 
 public class Tache {
     private int idTache;
-    private String description;
+    private String nomTache;
+
+
+    public String getTacheDescription() {
+        return tacheDescription;
+    }
+
+    public void setTacheDescription(String tacheDescription) {
+        this.tacheDescription = tacheDescription;
+    }
+
+    private String tacheDescription;
     private Date dateDbTache;
     private Date dateFinTache;
+    private String statut;
     private int idProjet;
 
-    public List<Ressource> getRessources() {
-        return ressources;
+
+
+    public String getStatut() {
+        return statut;
     }
 
-    public void setRessources(List<Ressource> ressources) {
-        this.ressources = ressources;
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 
-    List <Ressource> ressources;
 
-    public Tache(Date dateDbTache, Date dateFinTache, String description) {
-        this.dateDbTache = dateDbTache;
-        this.dateFinTache = dateFinTache;
-        this.description = description;
+    public Tache() {
+
     }
 
-    public Tache(Date dateDbTache, Date dateFinTache, String description, int idProjet, int idTache) {
-        this.dateDbTache = dateDbTache;
-        this.dateFinTache = dateFinTache;
-        this.description = description;
-        this.idProjet = idProjet;
-        this.idTache = idTache;
+    public String getNomTache() {
+        return nomTache;
     }
 
-    public Date getDateDbTache() {
-        return dateDbTache;
+    public void setNomTache(String nomTache) {
+        this.nomTache = nomTache;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public java.sql.Date getDateDbTache() {
+        return (java.sql.Date) dateDbTache;
     }
 
     public void setDateDbTache(Date dateDbTache) {
         this.dateDbTache = dateDbTache;
     }
 
-    public Date getDateFinTache() {
-        return dateFinTache;
+    public java.sql.Date getDateFinTache() {
+        return (java.sql.Date) dateFinTache;
     }
 
     public void setDateFinTache(Date dateFinTache) {
         this.dateFinTache = dateFinTache;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public int getIdProjet() {
         return idProjet;
@@ -74,4 +88,23 @@ public class Tache {
         this.idTache = idTache;
     }
 
+    public Tache(int idTache, String nomTache, String tacheDescription, Date dateDbTache, Date dateFinTache, String statut, int idProjet) {
+        this.idTache = idTache;
+        this.nomTache = nomTache;
+        this.tacheDescription = tacheDescription;
+        this.dateDbTache = dateDbTache;
+        this.dateFinTache = dateFinTache;
+        this.statut = statut;
+        this.idProjet = idProjet;
+
+    }
+
+    public Tache(String nomTache, String tacheDescription, Date dateDbTache, Date dateFinTache, String statut, int idProjet) {
+        this.nomTache = nomTache;
+        this.tacheDescription = tacheDescription;
+        this.dateDbTache = dateDbTache;
+        this.dateFinTache = dateFinTache;
+        this.statut = statut;
+        this.idProjet = idProjet;
+    }
 }
